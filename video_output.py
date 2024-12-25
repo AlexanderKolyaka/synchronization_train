@@ -8,18 +8,18 @@ class VideoPlayer:
         self.master = master
         self.master.title("Video Player")
         self.fps = fps
-        
+
         # Загрузка видео
         self.clip = VideoFileClip(video_path)
         self.frame_count = int(self.clip.fps * self.clip.duration)
-        
+
         # Создание метки для отображения видео
         self.label = Label(master)
         self.label.pack()
 
         self.current_frame = 0
         self.update_frame()
-    
+
     def change_speed(self, speed):
         self.fps = speed
 
@@ -33,7 +33,7 @@ class VideoPlayer:
             # Обновление метки с новым кадром
             self.label.config(image=frame)
             self.label.image = frame
-            
+
             # Переход к следующему кадру
             self.current_frame += 1
-            self.master.after(int(1000 / self.fps), self.update_frame)  # Установка задержки по fps
+            self.master.after(int(1000 / self.fps), self.update_frame)

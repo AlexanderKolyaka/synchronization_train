@@ -88,7 +88,9 @@ def release_video(out):
             frame4 = prev_frame4
 
         # Проверка на синхронизацию с небольшим отклонением
-        timestamps = [timestamp_sec1, timestamp_sec2, timestamp_sec3, timestamp_sec4]
+        timestamps = [
+            timestamp_sec1, timestamp_sec2, timestamp_sec3, timestamp_sec4
+            ]
         min_timestamp = min(timestamps)
         max_timestamp = max(timestamps)
         max_index = timestamps.index(max_timestamp)
@@ -144,7 +146,9 @@ def release_video(out):
             frame_index4 += 1
             # Если видео не синхронизированы, показываем текущие кадры
             current_frame = cv2.hconcat([frame1, frame2])
-            current_frame = cv2.vconcat([current_frame, cv2.hconcat([frame3, frame4])])
+            current_frame = cv2.vconcat(
+                [current_frame, cv2.hconcat([frame3, frame4])]
+                )
             ret1, frame1 = first_video.read()
             ret2, frame2 = second_video.read()
             ret3, frame3 = third_video.read()
