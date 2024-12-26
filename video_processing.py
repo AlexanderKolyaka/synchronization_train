@@ -34,6 +34,7 @@ prev_frame1 = prev_frame2 = prev_frame3 = prev_frame4 = None
 
 
 def release_video(out):
+    """Основной метод для синхронизации кадров 4х видео"""
     ret1, frame1 = first_video.read()
     ret2, frame2 = second_video.read()
     ret3, frame3 = third_video.read()
