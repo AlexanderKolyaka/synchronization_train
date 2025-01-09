@@ -1,7 +1,12 @@
 import cv2
 import datetime
 
-READ_FPS = 5
+# Задаем параметры видео
+WIDTH, HEIGHT = 640, 480  # Размеры видео
+FPS = 5  # Частота кадров
+OUTPUT_FILE = 'static/result.mp4'  # Имя выходного файла
+FOURCC = cv2.VideoWriter_fourcc(*'avc1')  # Кодек для MP4
+out = cv2.VideoWriter(OUTPUT_FILE, FOURCC, FPS, (WIDTH * 2, HEIGHT * 2))
 
 
 # Открытие видео
@@ -33,7 +38,7 @@ fourth_annotations = read_annotations('data/4.txt')
 prev_frame1 = prev_frame2 = prev_frame3 = prev_frame4 = None
 
 
-def release_video(out):
+def release_video():
     """Основной метод для синхронизации кадров 4х видео"""
     ret1, frame1 = first_video.read()
     ret2, frame2 = second_video.read()

@@ -15,12 +15,12 @@ def create_buttons():
     """Метод создания кнопок"""
     btn_normal = tk.Button(
                     root, text="Нормальная скорость",
-                    command=lambda: player.change_speed(5))
+                    command=lambda: player.change_speed(1))
     btn_normal.pack(side="left", padx=5, pady=5)
 
     btn_half = tk.Button(
                 root, text="Половинная скорость",
-                command=lambda: player.change_speed(100))
+                command=lambda: player.change_speed(5))
     btn_half.pack(side="left", padx=5, pady=5)
 
     btn_double = tk.Button(
@@ -30,9 +30,9 @@ def create_buttons():
 
 
 if __name__ == '__main__':
-    video_processing.release_video(out)
     root = tk.Tk()
     create_buttons()
     video_path = OUTPUT_FILE  # Замените на путь к вашему видео
+    video_processing.release_video(out)
     player = VideoPlayer(root, video_path)
     root.mainloop()

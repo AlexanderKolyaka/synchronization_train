@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+    <style>
+        /* Простое оформление для кнопок */
+        .speedButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Train</h1>
+    <video id="myVideo" controls>
+        <source src="{{ url_for('static', filename='result.mp4') }}" type="video/mp4">
+    </video>
+    <br>
+    <button class="speedButton" data-speed="1">0.5x</button>
+    <button class="speedButton" data-speed="5">1x</button>
+    <button class="speedButton" data-speed="50">1.5x</button>
+
+    <script>
+        // Получаем элемент видео
+        const video = document.getElementById('myVideo');
+        // Получаем все кнопки изменения скорости
+        const speedButtons = document.querySelectorAll('.speedButton');
+
+        // Добавляем обработчик события для каждой кнопки
+        speedButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Получаем значение скорости из атрибута data-speed
+                const speed = parseFloat(this.getAttribute('data-speed'));
+                // Устанавливаем скорость воспроизведения видео
+                video.playbackRate = speed;
+            });
+        });
+    </script>
+</body>
+</html>

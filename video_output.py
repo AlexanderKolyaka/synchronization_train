@@ -7,7 +7,7 @@ class VideoPlayer:
     """
     Класс видеоплеера для проигрывания результрующего видео,
     где 4 рассинхонизированных видео синхронизированы"""
-    def __init__(self, master, video_path, fps=5):
+    def __init__(self, master, video_path, fps=100):
         self.master = master
         self.master.title("Video Player")
         self.fps = fps
